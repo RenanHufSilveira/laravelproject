@@ -3,6 +3,9 @@
 @section('title', 'Listar')
 
 @section('content')
+<?php
+$existProducts = count($products) > 0 ? true : false;
+?>
 <div>
     <div class="row">
         <div id='search-container' class="col-md-12">
@@ -13,12 +16,14 @@
     </div>
 
     <form action="/products/delete" method="POST">
-    @csrf
+        @csrf
         <div class="row">
             <div id="command-container" class="col-md-12">
+                @if($existProducts)
                 <button type="submit" class="btn btn-danger" name="delete">
                     <ion-icon name="eye-outline"></ion-icon>Deletar
                 </button>
+                @endif
             </div>
         </div>
         <div class="row">
@@ -65,6 +70,9 @@
                         @endforeach
                     </tbody>
                 </table>
+                @if(!$existProducts)
+                <h2>Nenhum produto foi cadastrado</h2>
+                @endif
             </div>
     </form>
 </div>

@@ -26,6 +26,7 @@ class ProductController extends Controller
         $product->description = $request->description;
         $product->category = $request->category;
         $product->enabled = 1;
+        $product->validity = $request->validity;
 
         //Upload da imagem
         if($request->hasFile('image') && $request->file('image')->isValid()) {
