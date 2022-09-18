@@ -27,3 +27,4 @@ Route::get('/products/create', [ProductController::class, 'create']);
 Route::get('/products/list', [ProductController::class, 'index']);
 Route::get('/products/{id?}', [ProductController::class, 'show']);
 Route::post('/products', [ProductController::class, 'store']);
+Route::post('/products/delete/', [ProductController::class, 'destroy']);

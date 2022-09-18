@@ -46,4 +46,11 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
         return view('products.show', ['product' => $product]);
     }
+
+    public function destroy (Request $request)
+    {
+        $ids = $request->selectedProducts;
+        Product::destroy($ids);
+        return redirect('/products/list')->with("msg", "Produto excluido com sucesso");
+    }
 }
