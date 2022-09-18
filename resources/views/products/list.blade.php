@@ -9,8 +9,8 @@ $existProducts = count($products) > 0 ? true : false;
 <div>
     <div class="row">
         <div id='search-container' class="col-md-12">
-            <form class="d-flex" role="search" action="">
-                <input class="form-control" type="search" placeholder="Produrar" aria-label="Search">
+            <form class="d-flex" role="search" action="/products/list" method="GET">
+                <input class="form-control" type="search" placeholder="Procurar" name="search" aria-label="Search">
             </form>
         </div>
     </div>
@@ -70,8 +70,10 @@ $existProducts = count($products) > 0 ? true : false;
                         @endforeach
                     </tbody>
                 </table>
-                @if(!$existProducts)
-                <h2>Nenhum produto foi cadastrado</h2>
+                @if(!$existProducts && $search)
+                    <h3>Nenhum produto foi encontrado. <a href="/products/list">Ver todos</a></h3>
+                @elseif(!$existProducts)
+                    <h3>Nenhum produto foi cadastrado</h3>
                 @endif
             </div>
     </form>

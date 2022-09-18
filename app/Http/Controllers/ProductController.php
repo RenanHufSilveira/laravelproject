@@ -9,8 +9,17 @@ class ProductController extends Controller
 {
     public function index() 
     {
+        $search = request('search');
+
+        if($search) {
+            $products = Product::where('name', 'like','%'.$search.'%')
+            ->orWhere('id', 'like','%'.$search.'%')
+            ->get();
+            return view('products.list', ['products' => $products, 'search' => $search]);
+        }
+
         $products = Product::all();
-        return view('products.list', ['products' => $products]);
+        return view('products.list', ['products' => $products, 'search' => $search]);
     }
 
     public function create() 
