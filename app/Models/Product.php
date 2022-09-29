@@ -10,6 +10,10 @@ class Product extends Model
     use HasFactory;
 
     protected $dates = ['validity'];
+
+    public function category() {
+        return $this->belongsTo('App\Models\Category');
+    }
 }
 
 //php artisan make:model Product

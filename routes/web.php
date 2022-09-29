@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ExampleController;
 
 //----------------Exemplos----------------------------
@@ -28,3 +29,10 @@ Route::get('/products/list', [ProductController::class, 'index']);
 Route::get('/products/{id?}', [ProductController::class, 'show']);
 Route::post('/products', [ProductController::class, 'store']);
 Route::post('/products/delete/', [ProductController::class, 'destroy']);
+
+//----------------Categorias----------------------------
+Route::get('/categories/create', [CategoryController::class, 'create']);
+Route::get('/categories/list', [CategoryController::class, 'index']);
+Route::get('/categories/{id?}', [CategoryController::class, 'show']);
+Route::post('/categories', [CategoryController::class, 'store']);
+Route::post('/categories/delete/', [CategoryController::class, 'destroy']);
