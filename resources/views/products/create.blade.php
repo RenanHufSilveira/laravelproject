@@ -21,9 +21,9 @@
                     <label for="category" class="form-label">Categoria</label>
                     <select class="form-select" id="category" name="category" aria-label="Categoria do produto">
                         <option selected>Selecione uma categoria</option>
-                        <option value="Comida">Comida</option>
-                        <option value="Bebida">Bebida</option>
-                        <option value="Utilitários">Utilitários</option>
+                        @foreach($categories as $category)
+                            <option value="{{$category->id}}">{{$category->name}}</option>
+                        @endforeach
                     </select>
                     <div class="form-group">
                         <label for="image">Imagem</label>

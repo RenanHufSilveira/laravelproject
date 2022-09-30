@@ -11,6 +11,7 @@ class Product extends Model
 
     protected $dates = ['validity'];
 
+    // O produto tem uma categoria
     public function category() {
         return $this->belongsTo('App\Models\Category');
     }

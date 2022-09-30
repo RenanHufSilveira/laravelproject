@@ -53,7 +53,7 @@ $existProducts = count($products) > 0 ? true : false;
                             <td>{{$product->name}}</td>
                             <td>{{$product->quantity}}</td>
                             <td>{{$product->description}}</td>
-                            <td>{{$product->category}}</td>
+                            <td>{{$product->categoryName}}</td>
                             @if($product->enabled == 1)
                             <td>Ativado</td>
                             @else

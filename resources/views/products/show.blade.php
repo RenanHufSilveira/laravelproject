@@ -12,7 +12,7 @@
         <p>Nome: {{$product->name}}</p>
         <p>Descrição: {{$product->description}}</p>
         <p>Validate: {{date('d/m/Y', strtotime($product->validity))}}</p>
-        <p>Categoria: {{$product->category}}</p>
+        <p>Categoria: {{$category->name}}</p>
     </div>
     <div class="col-md-6">
         @if(!empty($product->image))

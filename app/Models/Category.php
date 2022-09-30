@@ -9,7 +9,8 @@ class Category extends Model
 {
     use HasFactory;
 
-    public function produts() {
+    // A categoria tem muitos produtos
+    public function products() {
         return $this->hasMany('App\Models\Produts');
     }
 }

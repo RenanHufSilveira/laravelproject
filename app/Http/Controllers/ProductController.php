@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Product;
 
@@ -18,13 +19,19 @@ class ProductController extends Controller
             return view('products.list', ['products' => $products, 'search' => $search]);
         }
 
-        $products = Product::all();
+        $products = Product::select([
+                        'products.*',
+                        'categories.name AS categoryName'
+                    ])
+                    -> join('categories', 'categories.id', '=', 'products.category_id')
+                    -> get();
         return view('products.list', ['products' => $products, 'search' => $search]);
     }
 
     public function create() 
     {
-        return view('products.create');
+        $categories = Category::all();
+        return view('products.create', ['categories' => $categories]);
     }
 
     public function store(Request $request)
@@ -33,10 +40,9 @@ class ProductController extends Controller
         $product->name = $request->name;
         $product->quantity = $request->quantity;
         $product->description = $request->description;
-        $product->category = $request->category;
         $product->enabled = 1;
         $product->validity = $request->validity;
-        $product->category_id = 2;
+        $product->category_id = $request->category;
 
         //Upload da imagem
         if($request->hasFile('image') && $request->file('image')->isValid()) {
@@ -55,7 +61,8 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = Product::findOrFail($id);
-        return view('products.show', ['product' => $product]);
+        $category = Category::findOrFail($product->category_id);
+        return view('products.show', ['product' => $product, 'category' => $category]);
     }
 
     public function destroy (Request $request)
