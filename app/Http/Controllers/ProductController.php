@@ -19,12 +19,18 @@ class ProductController extends Controller
             return view('products.list', ['products' => $products, 'search' => $search]);
         }
 
+        /*
+        Exemplo de join, não preciso fazer isso porque com o BelongTo ao fazer a consulta de
+        produto as informações da categoria já vem com os registros
         $products = Product::select([
                         'products.*',
                         'categories.name AS categoryName'
                     ])
                     -> join('categories', 'categories.id', '=', 'products.category_id')
                     -> get();
+        */
+
+        $products = Product::all();
         return view('products.list', ['products' => $products, 'search' => $search]);
     }
 
@@ -61,14 +67,12 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = Product::findOrFail($id);
-        $category = Category::findOrFail($product->category_id);
-        return view('products.show', ['product' => $product, 'category' => $category]);
+        return view('products.show', ['product' => $product]);
     }
 
     public function destroy (Request $request)
     {
-        $ids = $request->selectedProducts;
-        Product::destroy($ids);
+        Product::destroy($request->selectedProducts);
         return redirect('/products/list')->with("msg", "Produto excluido com sucesso");
     }
 }

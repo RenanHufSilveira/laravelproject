@@ -12,13 +12,13 @@
         <p>Nome: {{$product->name}}</p>
         <p>Descrição: {{$product->description}}</p>
         <p>Validate: {{date('d/m/Y', strtotime($product->validity))}}</p>
-        <p>Categoria: {{$category->name}}</p>
+        <p>Categoria: {{$product->category->name}}</p>
     </div>
     <div class="col-md-6">
         @if(!empty($product->image))
-            <img src="/img/products/{{$product->image}}" class="col-md-10"/>
+            <img src="/img/products/{{$product->image}}" class="col-md-10 imgShow"/>
         @else
-            <img src="/img/products/default.jpg" class="col-md-10"/>
+            <img src="/img/products/default.jpg" class="col-md-10 imgShow"/>
         @endif
     </div>
 </div>

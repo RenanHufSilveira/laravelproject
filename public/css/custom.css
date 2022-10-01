@@ -20,3 +20,7 @@ footer {
     text-align: center;
     padding: 10px;
 }
+
+.imgShow {
+    max-height: 450px;
+}
