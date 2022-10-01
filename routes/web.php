@@ -27,8 +27,10 @@ Route::get('/example/friendlyurl/{id?}', [ExampleController::class, 'exampleFor'
 Route::get('/products/create', [ProductController::class, 'create']);
 Route::get('/products/list', [ProductController::class, 'index']);
 Route::get('/products/{id?}', [ProductController::class, 'show']);
+Route::get('/products/edit/{id}', [ProductController::class, 'edit']);
 Route::post('/products', [ProductController::class, 'store']);
 Route::delete('/products/delete', [ProductController::class, 'destroy']);
+Route::put('/products/update/{id}', [ProductController::class, 'update']);
 
 //----------------Categorias----------------------------
 Route::get('/categories/create', [CategoryController::class, 'create']);

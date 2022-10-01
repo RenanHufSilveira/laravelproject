@@ -65,7 +65,7 @@ $existProducts = count($products) > 0 ? true : false;
                                     <a href="/products/{{$product->id}}" class="btn btn-dark col-3">
                                         <ion-icon name="eye-outline"></ion-icon>
                                     </a>
-                                    <a href="/products/{{$product->id}}" class="btn btn-dark col-3">
+                                    <a href="/products/edit/{{$product->id}}" class="btn btn-dark col-3">
                                         <ion-icon name="create-outline"></ion-icon>
                                     </a>
                                 </div>

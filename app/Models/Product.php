@@ -10,9 +10,13 @@ class Product extends Model
     use HasFactory;
 
     protected $dates = ['validity'];
+    //Tudo que for enviado por post pode ser alterado, se colocar algum campo no array
+    //o laravel não deixaria atualizar no banco
+    protected $guarded = [];
 
     // O produto tem uma categoria
-    public function category() {
+    public function category()
+    {
         return $this->belongsTo('App\Models\Category');
     }
 }

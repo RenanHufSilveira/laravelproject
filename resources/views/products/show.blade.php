@@ -10,8 +10,9 @@
     <div class="col-md-6">
         <p>Identificador: {{$product->id}}</p>
         <p>Nome: {{$product->name}}</p>
+        <p>Quantidade: {{$product->quantity}}</p>
+        <p>Validade: {{$product->validity->format('d/m/Y')}}</p>
         <p>Descrição: {{$product->description}}</p>
-        <p>Validate: {{date('d/m/Y', strtotime($product->validity))}}</p>
         <p>Categoria: {{$product->category->name}}</p>
     </div>
     <div class="col-md-6">

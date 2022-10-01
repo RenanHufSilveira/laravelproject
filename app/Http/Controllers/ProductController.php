@@ -75,4 +75,29 @@ class ProductController extends Controller
         Product::destroy($request->selectedProducts);
         return redirect('/products/list')->with("msg", "Produto excluido com sucesso");
     }
+
+    public function edit($id)
+    {
+        $product = Product::findOrFail($id);
+        $categories = Category::all();
+        return view('products.edit', ['product' => $product, 'categories' => $categories]);
+    }
+
+    public function update(Request $request)
+    {
+        $data = $request->all();
+
+        //Upload da imagem
+        if($request->hasFile('image') && $request->file('image')->isValid()) {
+            $requestImage = $request->image;
+            $extension = $requestImage->extension();
+            $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")).".".$extension;
+            $requestImage->move(public_path('img/products/'), $imageName);
+            $data['image'] = $imageName;
+        }
+        
+        $product = Product::findOrFail($request->id)->update($data);
+        return redirect('/products/list')->with("msg", "Produto alterado com sucesso");
+    }
+
 }
