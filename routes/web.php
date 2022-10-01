@@ -28,11 +28,11 @@ Route::get('/products/create', [ProductController::class, 'create']);
 Route::get('/products/list', [ProductController::class, 'index']);
 Route::get('/products/{id?}', [ProductController::class, 'show']);
 Route::post('/products', [ProductController::class, 'store']);
-Route::post('/products/delete/', [ProductController::class, 'destroy']);
+Route::delete('/products/delete', [ProductController::class, 'destroy']);
 
 //----------------Categorias----------------------------
 Route::get('/categories/create', [CategoryController::class, 'create']);
 Route::get('/categories/list', [CategoryController::class, 'index']);
 Route::get('/categories/{id?}', [CategoryController::class, 'show']);
 Route::post('/categories', [CategoryController::class, 'store']);
-Route::post('/categories/delete/', [CategoryController::class, 'destroy']);
+Route::delete('/categories/delete', [CategoryController::class, 'destroy']);

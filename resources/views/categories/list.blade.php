@@ -17,11 +17,12 @@ $existCategories = count($categories) > 0 ? true : false;
 
     <form action="/categories/delete" method="POST">
         @csrf
+        @method('DELETE')
         <div class="row">
             <div id="command-container" class="col-md-12">
                 @if($existCategories)
                 <button type="submit" class="btn btn-danger" name="delete">
-                    <ion-icon name="eye-outline"></ion-icon>Deletar
+                    <ion-icon name="trash-outline"></ion-icon>Deletar
                 </button>
                 @endif
             </div>
@@ -35,7 +36,7 @@ $existCategories = count($categories) > 0 ? true : false;
                             <th scope="col">Código</th>
                             <th scope="col">Nome</th>
                             <th scope="col">Descrição</th>
-                            <th scope="col">Visualizar</th>
+                            <th scope="col">Ações</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -50,9 +51,12 @@ $existCategories = count($categories) > 0 ? true : false;
                             <td>{{$category->name}}</td>
                             <td>{{$category->description}}</td>
                             <td>
-                                <div class="row justify-content-center">
-                                    <a href="/categories/{{$category->id}}" class="btn btn-dark col-5">
+                                <div class="row align-center justify-content-evenly">
+                                    <a href="/categories/{{$category->id}}" class="btn btn-dark col-3">
                                         <ion-icon name="eye-outline"></ion-icon>
+                                    </a>
+                                    <a href="/categories/{{$category->id}}" class="btn btn-dark col-3">
+                                        <ion-icon name="create-outline"></ion-icon>
                                     </a>
                                 </div>
                             </td>
@@ -61,9 +65,9 @@ $existCategories = count($categories) > 0 ? true : false;
                     </tbody>
                 </table>
                 @if(!$existCategories && $search)
-                    <h3>Nenhuma categoria foi encontrada. <a href="/categories/list">Ver todos</a></h3>
+                <h3>Nenhuma categoria foi encontrada. <a href="/categories/list">Ver todos</a></h3>
                 @elseif(!$existCategories)
-                    <h3>Nenhuma categoria foi cadastrada</h3>
+                <h3>Nenhuma categoria foi cadastrada</h3>
                 @endif
             </div>
     </form>

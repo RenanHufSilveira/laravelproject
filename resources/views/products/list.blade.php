@@ -17,11 +17,12 @@ $existProducts = count($products) > 0 ? true : false;
 
     <form action="/products/delete" method="POST">
         @csrf
+        @method('DELETE')
         <div class="row">
             <div id="command-container" class="col-md-12">
                 @if($existProducts)
                 <button type="submit" class="btn btn-danger" name="delete">
-                    <ion-icon name="eye-outline"></ion-icon>Deletar
+                    <ion-icon name="trash-outline"></ion-icon>Deletar
                 </button>
                 @endif
             </div>
@@ -38,7 +39,7 @@ $existProducts = count($products) > 0 ? true : false;
                             <th scope="col">Descrição</th>
                             <th scope="col">Categoria</th>
                             <th scope="col">Ativo</th>
-                            <th scope="col">Visualizar</th>
+                            <th scope="col">Ações</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -60,9 +61,12 @@ $existProducts = count($products) > 0 ? true : false;
                             <td>Desativado</td>
                             @endif
                             <td>
-                                <div class="row justify-content-center">
-                                    <a href="/products/{{$product->id}}" class="btn btn-dark col-5">
+                                <div class="row align-center justify-content-evenly">
+                                    <a href="/products/{{$product->id}}" class="btn btn-dark col-3">
                                         <ion-icon name="eye-outline"></ion-icon>
+                                    </a>
+                                    <a href="/products/{{$product->id}}" class="btn btn-dark col-3">
+                                        <ion-icon name="create-outline"></ion-icon>
                                     </a>
                                 </div>
                             </td>
@@ -71,9 +75,9 @@ $existProducts = count($products) > 0 ? true : false;
                     </tbody>
                 </table>
                 @if(!$existProducts && $search)
-                    <h3>Nenhum produto foi encontrado. <a href="/products/list">Ver todos</a></h3>
+                <h3>Nenhum produto foi encontrado. <a href="/products/list">Ver todos</a></h3>
                 @elseif(!$existProducts)
-                    <h3>Nenhum produto foi cadastrado</h3>
+                <h3>Nenhum produto foi cadastrado</h3>
                 @endif
             </div>
     </form>

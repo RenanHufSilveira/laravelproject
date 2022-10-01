@@ -45,8 +45,7 @@ class CategoryController extends Controller
 
     public function destroy (Request $request)
     {
-        $ids = $request->selectedCategories;
-        category::destroy($ids);
+        category::destroy($request->selectedCategories);
         return redirect('/categories/list')->with("msg", "Categoria excluida com sucesso");
     }
 }
