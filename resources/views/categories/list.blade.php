@@ -55,7 +55,7 @@ $existCategories = count($categories) > 0 ? true : false;
                                     <a href="/categories/{{$category->id}}" class="btn btn-dark col-3">
                                         <ion-icon name="eye-outline"></ion-icon>
                                     </a>
-                                    <a href="/categories/{{$category->id}}" class="btn btn-dark col-3">
+                                    <a href="/categories/edit/{{$category->id}}" class="btn btn-dark col-3">
                                         <ion-icon name="create-outline"></ion-icon>
                                     </a>
                                 </div>
