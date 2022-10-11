@@ -11,9 +11,9 @@
             <div class="row">
                 <div class="form-group">
                     <label for="name" class="form-label">Nome</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Nome do produto">
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Nome da categoria">
                     <label for="description" class="form-label">Descrição</label>
-                    <textarea row="3" class="form-control" id="description" name="description" placeholder="Descrição do produto"></textarea>
+                    <textarea row="3" class="form-control" id="description" name="description" placeholder="Descrição da categoria"></textarea>
                 </div>
             </div>
             <div class="row">

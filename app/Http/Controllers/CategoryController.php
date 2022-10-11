@@ -45,7 +45,20 @@ class CategoryController extends Controller
 
     public function destroy (Request $request)
     {
-        category::destroy($request->selectedCategories);
+        Category::destroy($request->selectedCategories);
         return redirect('/categories/list')->with("msg", "Categoria excluida com sucesso");
+    }
+
+    public function edit($id)
+    {
+        $category = Category::findOrFail($id);
+        return view('categories.edit', ['category' => $category]);
+    }
+
+    public function update(Request $request)
+    {
+        $data = $request->all();
+        $category = Category::findOrFail($request->id)->update($data);
+        return redirect('/categories/list')->with("msg", "Categoria alterada com sucesso");
     }
 }
